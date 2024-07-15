@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hwayeon blog</title>
+</head>
+<body>
+<header>
+    <div class="headerlogo">
+        <a th:href="@{/}">
+            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMTVfMjc3%2FMDAxNjcxMDkwNjU3NjAx.uy05CjAv_4VymZIj8qCXAei3LEHvgFy_llwv_uB5ubgg.4DUvwuY6JLlmv5BUTBIAKvRz-T2vXJCO17EQPPJ-_-sg.PNG.y2kwooga%2F%25B3%25D7%25C0%25CC%25B9%25F6_AI-05.png&type=sc960_832"
+                 alt="로고 이미지">
+        </a>
+    </div>
+    <div class="subject">
+        hwayeon blog
+    </div>
+    <div class="serch">
+        <div class="home">
+            <button type="button" class="btn btn-primary" onclick="location.href='/hwayeon/main'"> 홈 </button>
+        </div>
+        <div class="writebutton">
+            <button type="button" class="btn btn-primary" onclick="location.href='/hwayeon/editpage'">게시글 등록</button>
+        </div>
+        <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fe7.pngegg.com%2Fpngimages%2F381%2F351%2Fpng-clipart-computer-icons-google-search-icon-design-magnifying-glass-cartoon-logo-android.png&type=sc960_832"
+             alt="검색 아이콘">
+    </div>
+</header>
+
+<section>
+    <div class="container" th:each="allPosts : ${posts}">
+        <div class="thumbnail">
+            썸네일
+        </div>
+        <div class="Summary">
+            <div class="blogtitle">
+                <h3>제목: <span th:text="${allPosts.blogTitle}">블로그 제목</span></h3>
+            </div>
+            <div class="blogcontents">
+                <p>내용: <span th:text="${allPosts.blogContent}">블로그 내용</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    body {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto auto;
+        gap: 20px;
+    }
+
+    header {
+        grid-column: 1 / 4;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid black;
+    }
+
+    .headerlogo a img {
+        height: 30px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        margin: 0px 5px;
+    }
+
+    .serch {
+        display: flex;
+    }
+
+    .serch img {
+        height: 30px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        margin: 0px 5px;
+    }
+
+    section {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+    }
+
+    .thumbnail {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        text-align: center;
+        background-color: #f2f2f2;
+        padding: 20px 0;
+    }
+
+    .Summary {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+
+    .writebutton {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        text-align: right;
+    }
+</style>
+</body>
+</html>

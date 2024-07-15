@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit JYBlog</h2>
+    <form th:action="@{/jooyeon/edit}" th:object="${blogDTO}" method="post">
+        <div class="form-group">
+            <label for="blogTitle">Title:</label>
+            <input type="text" class="form-control" id="blogTitle" th:field="*{blogTitle}" required>
+        </div>
+        <div class="form-group">
+            <label for="blogContent">Content:</label>
+            <textarea class="form-control" id="blogContent" th:field="*{blogContent}" rows="5" required></textarea>
+            <a th:href="@{/jooyeon/edit/{id}(id=${blog.id})}" class="btn btn-info btn-sm">수정</a>
+        </div>
+        <input type="hidden" th:field="*{id}">
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+</body>
+</html>
